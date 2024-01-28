@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dad JOke</title>
+  </head>
+  <style>
+    .container {
+      height: 399px;
+      width: 399px;
+      border: 2px solid;
+    }
+  </style>
+  <body>
+    <div class="container">
+        <p id="para"></p>
+      <button id="btrn">Dad Joke</button>
+    </div>
+  </body>
+  <script>
+    let btn = document.getElementById("btrn");
+    let apikey = "Jznctih1kFhvpMaJCzjebg==m6grmVUCVU7P5on2";
+    const option = {
+      method: "GET",
+      headers: { "X-Api-Key": apikey },
+    };
+    const apiURL='https://api.api-ninjas.com/v1/dadjokes?limit=1'
+    Joke = async () => {let data=await fetch(apiURL,option)
+let response=await data.json()
+document.getElementById("para").innerText=response[0].joke
+console.log(response[0].joke)};
+
+    Joke();
+    btn.addEventListener("click", Joke);
+  </script>
+</html>
